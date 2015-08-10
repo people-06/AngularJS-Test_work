@@ -1,13 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Comfortaa:400,300,700&subset=latin,cyrillic-ext);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700,600italic,300italic,300,700italic,800italic,800);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300,300italic,400italic,700italic&subset=latin,cyrillic-ext);
 @import "animation.less";
 
 html, body {
   min-height: 100%;
 }
 body {
-  font-family: 'Comfortaa', cursive;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -23,12 +21,16 @@ body {
 
 /* HEADER */
 .navbar {
-  box-shadow: 0 1px 2px #204d74;
+  border: 0;
   margin-bottom: 0;
 }
 .navbar-nav {
   font-size: 1.2em;
   padding-top: 0.5em;
+
+  a {
+    cursor: pointer;
+  }
 }
 .navbar-brand {
   background: url("../img/logo.png") no-repeat 0 center;
@@ -43,15 +45,16 @@ body {
     font-size: 0.7em;
     line-height: 0.8em;
   }
-}
-.navbar-default .navbar-brand {
-  color: #204d74;
+  .glyphicon {
+    color: #ff4041;
+  }
 }
 
 
 /* MAIN CONTENT */
 .hero {
-  background: url("../img/bg.jpeg") no-repeat center;
+  background: #A5E6DF url("../img/SUST4-150ppp-01.jpg") no-repeat center;
+  //background: url("../img/bg4.jpg") no-repeat center;
   background-size: 100% auto;
   background-attachment: fixed;
   min-height: 500px;
@@ -60,21 +63,6 @@ body {
 }
 
 .index-about {
-  border-top: 3px solid #204d74;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255,255,255, 0.8);
-  margin: auto;
-  max-width: 600px;
-  max-height: 360px;
-  padding: 0.5em 2em 1em;
-
-  header {
-    margin-bottom: 2em;
-  }
 
   .close:hover {
     .jello();
@@ -84,16 +72,9 @@ body {
 }
 
 .index-form {
-  background: url(../img/repeat.png) center 0;
-  background-attachment: fixed;
-  border-top: 3px solid #204d74;
-  padding: 3em 0 5em;
 
   .agreement {
     line-height: 1em;
-    display: inline-block;
-    vertical-align: middle;
-    width: 67%;
 
     input {
       margin-top: 0;
@@ -101,7 +82,7 @@ body {
   }
 
   .form-control {
-    border-bottom: 2px solid #204d74;
+    border-bottom: 2px solid #3f51b5;
     box-shadow: none;
   }
 
@@ -118,21 +99,44 @@ body {
   }
 }
 
-.request-form {
-  max-width: 800px;
-  margin: 0 auto;
+.modal-content {
+  border: 0;
+}
+
+.modal-header {
+  background: #106CC8;
+  color: #fff;
+  text-align: center;
+  h1, h4 {
+    margin: 0;
+  }
 }
 
 .index-questions {
-  background: #fff;
-  border-top: 3px solid #204d74;
+  background: #f1f1f1;
+  border-top: 3px solid #3f51b5;
   padding: 3em 0 5em;
 
-  .request-preview {
-    margin-bottom: 2.5em;
+  h1 {
+    font-weight: 700;
+  }
 
-    h4 {
-      margin: 1.5em 0 1em;
+  .request-preview {
+    background: #fff;
+    margin: 0 1% 2.5em;
+    padding: 0;
+    width: 23%;
+
+    a {
+      text-decoration: none;
+    }
+
+    .caption {
+      font-size: 16px;
+      margin: 0;
+      padding: 1em;
+      text-transform: uppercase;
+      height: 4.1em;
     }
 
     .btn {
@@ -150,21 +154,26 @@ body {
   }
 
   .img-wrap {
-    border: 1px solid #ccc;
-    border-radius: 1px;
     display: block;
-    min-height: 200px;
     text-align: center;
-    vertical-align: bottom;
+    overflow: hidden;
 
-    &:hover {
-      .pulse();
-      animation-duration: 1s;
-    }
 
     &.no-image {
-      background: url("../img/flowers.png") no-repeat center 100%;
-      background-size: auto 90%;
+      background:  #B2EBF2;
+      padding: 1em 1em 0;
+
+      img {
+        max-width: 80%;
+        .transition (all .5s ease);
+        .transform (scale(1,1));
+
+        &:hover {
+          .transform (scale(1.09,1.09));
+          .transition (all .5s ease);
+        }
+
+      }
     }
   }
   img {
@@ -174,8 +183,8 @@ body {
 }
 
 .site-footer {
-  background: #204d74;
+  background: #1A237E;
   color: #fff;
-  border-top: 3px solid #204d74;
+  border-top: 3px solid #3f51b5;
   padding: 2em 0 3em;
 }

@@ -14,7 +14,7 @@
 @gray-light:             lighten(@gray-base, 46.7%); // #777
 @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
 
-@brand-primary:         #204d74; // #337ab7
+@brand-primary:         #3f51b5; // #337ab7
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
@@ -103,8 +103,8 @@
 @line-height-small:         1.5;
 
 @border-radius-base:        0;
-@border-radius-large:       6px;
-@border-radius-small:       3px;
+@border-radius-large:       4px;
+@border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -264,7 +264,7 @@
 
 //-- Z-index master list
 //
-// Warning: Avoid customizing these values. They're used for a bird's eye view
+// Warning: Avoid customizing these values. They're used for a bird's eye views
 // of components dependent on the z-axis and are designed to all work together.
 //
 // Note: These variables are not generated into the Customizer.
@@ -364,15 +364,15 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             #777;
-@navbar-default-bg:                #f8f8f8;
+@navbar-default-color:             #000;
+@navbar-default-bg:                #3f51b5;
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                #777;
-@navbar-default-link-hover-color:          #333;
+@navbar-default-link-color:                #fff;
+@navbar-default-link-hover-color:          #c5cae9;
 @navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         #555;
+@navbar-default-link-active-color:         #f2f2f2;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
 @navbar-default-link-disabled-color:       #ccc;
 @navbar-default-link-disabled-bg:          transparent;
@@ -588,10 +588,10 @@
 //##
 
 //** Padding applied to the modal body
-@modal-inner-padding:         15px;
+@modal-inner-padding:         24px;
 
 //** Padding applied to the modal title
-@modal-title-padding:         15px;
+@modal-title-padding:         24px;
 //** Modal title line-height
 @modal-title-line-height:     @line-height-base;
 
@@ -612,7 +612,7 @@
 @modal-footer-border-color:   @modal-header-border-color;
 
 @modal-lg:                    900px;
-@modal-md:                    600px;
+@modal-md:                    800px;
 @modal-sm:                    300px;
 
 
