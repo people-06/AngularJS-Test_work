@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Комиссия по вопросам</title>
-    <link rel="stylesheet" href="../src/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="src/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body ng-app="CommissionApp">
 
@@ -28,7 +28,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-controller="RequestFormCtrl">
+                    <li ng-controller="TicketFormCtrl">
                         <a ng-click="open()"><span class="glyphicon glyphicon-edit"></span> Send request</a>
                     </li>
                     <li><a href="#questions">Open questions</a></li>
@@ -45,19 +45,19 @@
 
 <section class="hero"></section>
 
-<section class="index-questions" id="questions" ng-controller="ShowRequestsCtrl">
+<section class="index-questions" id="questions" ng-controller="ShowTicketsCtrl">
     <div class="container">
         <header class="section-header">
             <h1>Open Questions</h1>
-            <h4>We got <strong>356</strong> requests</h4>
+            <h4>We got <strong>{{tickets.length}}</strong> requests</h4>
         </header>
         <div class="row">
-            <article class="col-sm-6 col-md-3 request-preview" ng-repeat="request in requests">
-                <a href="" id="request-{{request.ticketId}}">
+            <article class="col-sm-6 col-md-3 request-preview" ng-repeat="ticket in tickets" ng-controller="TicketViewCtrl">
+                <a class="link-to-ticket" id="request-{{ticket.ticketId}}" ng-click="open(ticket);">
                     <div class="img-wrap no-image">
-                        <img src="../src/img/random/home175.png"/>
+                        <img src="src/img/random/home175.png"/>
                     </div>
-                    <h3 class="caption">{{request.description}}</h3>
+                    <h3 class="caption">{{ticket.title}}</h3>
                 </a>
             </article>
         </div>
@@ -69,6 +69,37 @@
         Copyright <span class="glyphicon glyphicon-copyright-mark"></span> 2015 Commission, which help build LIFE
     </div>
 </footer>
+
+<div ng-controller="TicketViewCtrl">
+    <script  type="text/ng-template" id="ticketViewModal.html">
+        <article class="ticket-view">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" ng-click="cancel()">
+                    <span aria-hidden="true">&#10007;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h2>{{ticket.title}}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="img-wrap no-image">
+                            <img src="src/img/random/home175.png"/>
+                        </div></div>
+                    <div class="col-xs-7">
+                        <h4>{{ticket.firstName}} <small class="date">{{formatDate(ticket.creationDate) |  date:"MM.dd.yyyy" }}</small> <span class="label label-status label-default pull-right">{{ticket.status.status}}</span></h4>
+                        <p class="small"><strong>Address:</strong> {{ticket.address}}</p>
+                        <div class="description">{{ticket.description}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </article>
+    </script>
+</div>
 
 <div ng-controller="AboutUsCtrl">
     <script  type="text/ng-template" id="AboutUsModal.html">
@@ -88,22 +119,22 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consectetur, culpa error non officiis placeat
                     ratione vel voluptates. Hic nam nemo nostrum perspiciatis quibusdam quo recusandae rem! At quibusdam,
                     tempora.</p>
-                <img src="../src/img/animation/city.png"  class="img-responsive city-img" alt="Our city">
+                <img src="src/img/animation/city.png"  class="img-responsive city-img" alt="Our city">
             </div>
 
         </article>
     </script>
 </div>
 
-<div ng-controller="RequestFormCtrl">
-    <script type="text/ng-template" id="requestModal.html">
+<div ng-controller="TicketFormCtrl">
+    <script type="text/ng-template" id="ticketFormModal.html">
 
         <section class="index-form" id="apply">
             <header class="modal-header">
                 <h1>Open the Question</h1>
                 <h4>Make World better!</h4>
             </header>
-            <form class="request-form" action="" name="request">
+            <form class="request-form" action="" name="requestTicket">
                 <div class="modal-body">
                     <p class="help-block pull-right"><small>Be sure, your family name, email and phone number is confidential information and will not be shown at the site</small></p>
                     <div class="form-group row">
@@ -119,7 +150,7 @@
                             <input type="text" class="form-control" placeholder="Your mobile">
                         </div>
                         <div class="col-xs-8">
-                            <input type="text" class="form-control" placeholder="Address where happen the problem">
+                            <input type="text" class="form-control" placeholder="Address, where happen a problem">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -162,9 +193,9 @@
 </div>
 
 <!-- JS FILES -->
-<script src="../src/js/angular/angular.min.js"></script>
-<script src="../src/js/ui-bootstrap-tpls-0.13.3.js"></script>
-<script src="../src/js/app.js"></script>
+<script src="src/js/angular/angular.min.js"></script>
+<script src="src/js/ui-bootstrap-tpls-0.13.3.js"></script>
+<script src="src/js/app.js"></script>
 
 </body>
 </html>

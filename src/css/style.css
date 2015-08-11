@@ -319,6 +319,7 @@ body {
   text-align: center;
 }
 .modal-header h1,
+.modal-header h2,
 .modal-header h4 {
   margin: 0;
 }
@@ -363,7 +364,7 @@ body {
   overflow: hidden;
 }
 .index-questions .img-wrap.no-image {
-  background: #B2EBF2;
+  background: #C8F0EC;
   padding: 1em 1em 0;
 }
 .index-questions .img-wrap.no-image img {
@@ -394,6 +395,15 @@ body {
 .index-questions img {
   max-width: 100%;
   width: 100%;
+}
+.ticket-view .modal-header h2 {
+  font-size: 20px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.ticket-view .label-status {
+  text-transform: lowercase;
+  font-variant: small-caps;
 }
 .site-footer {
   background: #1A237E;

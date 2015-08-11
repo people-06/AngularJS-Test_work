@@ -2,67 +2,73 @@ var CommissionApp = angular.module('CommissionApp', ['ui.bootstrap']);
 
 // Requests
 
-CommissionApp.controller('ShowRequestsCtrl', function ($scope){
-
-    $scope.requests = [
+CommissionApp.controller('ShowTicketsCtrl', function ($scope) {
+    $scope.tickets = [
         {
-            "ticketId":1,
-            "userOwnerId":1,
-            "firstName":"Anton",
-            "lastName":"Nik",
-            "phone":null,
-            "title":"Test ticket",
-            "description":"Description ticket",
-            "creationDate":"2015-08-13 00:00:00",
-            "status":{
-                "ticketsStatusId":2,
-                "status":"PUBLIC",
-                "publicStatus":true
+            "ticketId": 1,
+            "userOwnerId": 1,
+            "firstName": "Anton",
+            "lastName": "Nik",
+            "phone": "911-99-99",
+            "address": "18178, Some city, some street in city, 1, apt 15",
+            "title": "Test ticket",
+            "description": "Description ticket",
+            "creationDate": "2015-08-13 00:00:00",
+            "status": {
+                "ticketsStatusId": 2,
+                "status": "PUBLIC",
+                "publicStatus": true
             },
-            "categories":[{
-     "ticketCategoryId":2,
-     "parentCategoryId":0,
-     "title":"Cat2",
-     "description":"Description for cat2"
-            }]},
+            "categories": [{
+                "ticketCategoryId": 2,
+                "parentCategoryId": 0,
+                "title": "Cat2",
+                "description": "Description for cat2"
+            }]
+        },
         {
-            "ticketId":30,
-            "userOwnerId":0,
-            "firstName":"Anton",
-            "lastName":"Nik",
-            "phone":"911-99-99",
-            "title":"Test ticket from client side",
-            "description":"Description for ticket from client side",
-            "creationDate":"2015-08-09 23:49:07.180925",
-            "status":{
-                "ticketsStatusId":2,
-                "status":"PUBLIC",
-                "publicStatus":true
+            "ticketId": 30,
+            "userOwnerId": 0,
+            "firstName": "Anton",
+            "lastName": "Nik",
+            "phone": "911-99-99",
+            "address": "18178, Some city, some street in city, 1, apt 15",
+            "title": "Test ticket from client side",
+            "description": "Description for ticket from client side",
+            "creationDate": "2015-08-09 23:49:07.180925",
+            "status": {
+                "ticketsStatusId": 2,
+                "status": "PUBLIC",
+                "publicStatus": true
             },
-            "categories":[{
-                "ticketCategoryId":2,
-                "parentCategoryId":0,
-                "title":"Cat2",
-                "description":"Description for cat2"
-            }]}
-    ]
-
+            "categories": [{
+                "ticketCategoryId": 2,
+                "parentCategoryId": 0,
+                "title": "Cat2",
+                "description": "Description for cat2"
+            }]
+        }
+    ];
+    $scope.formatDate = function(date){
+        var dateOut = new Date(date);
+        return dateOut;
+    };
 });
-
 
 
 // MODALS
 
-CommissionApp.controller('RequestFormCtrl', function ($scope, $modal) {
+// Controllers for Request Form Modal
+CommissionApp.controller('TicketFormCtrl', function ($scope, $modal) {
     $scope.open = function (size) {
         var modalInstance = $modal.open({
-            templateUrl: 'requestModal.html',
-            controller: 'CloseRequestCtrl',
+            templateUrl: 'ticketFormModal.html',
+            controller: 'CloseTicketFormCtrl',
             size: size
         });
     };
 });
-CommissionApp.controller('CloseRequestCtrl', function ($scope, $modalInstance) {
+CommissionApp.controller('CloseTicketFormCtrl', function ($scope, $modalInstance) {
 
     $scope.ok = function () {
         $modalInstance.close();
@@ -73,6 +79,7 @@ CommissionApp.controller('CloseRequestCtrl', function ($scope, $modalInstance) {
     };
 });
 
+// Controllers for About Us Modal
 CommissionApp.controller('AboutUsCtrl', function ($scope, $modal) {
     $scope.open = function (size) {
         var modalInstance = $modal.open({
@@ -83,6 +90,27 @@ CommissionApp.controller('AboutUsCtrl', function ($scope, $modal) {
     };
 });
 CommissionApp.controller('CloseAboutUsCtrl', function ($scope, $modalInstance) {
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
+
+// Controllers for Request View Modal
+CommissionApp.controller('TicketViewCtrl', function ($scope, $modal) {
+    $scope.open = function (ticket) {
+        var modalInstance = $modal.open({
+            templateUrl: 'ticketViewModal.html',
+            controller: 'CloseTicketViewCtrl',
+            scope: $scope,
+            resolve: {
+                ticket: function () {
+                    return ticket;
+                }
+            }
+        });
+    };
+});
+CommissionApp.controller('CloseTicketViewCtrl', function ($scope, $modalInstance) {
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
