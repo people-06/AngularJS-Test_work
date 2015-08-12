@@ -189,14 +189,10 @@ CommissionApp.directive('checkphone', function() {
     };
 });
 // File validation
-CommissionApp.directive('validFile', function () {
+CommissionApp.directive('checkfile', function () {
 
     return {
         require: 'ngModel',
-        scope: {
-            fileTypes: '=valFileTypes',
-            fileSize: '=valFileSize'
-        },
         link: function (scope, elem, attrs, ngModel) {
 
             elem.bind('change', function () {
@@ -204,20 +200,16 @@ CommissionApp.directive('validFile', function () {
             });
 
             function validate(files) {
-                var validType = true;
-                var validSize = true;
                 var filePattern = new RegExp("^([a-zA-Z0-9А-яЁё\s_\\.\-:])+\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|doc|DOC|pdf|PDF)$");
 
                 // Check file type and size of each file
-                if (!filePattern.test(files[0].name)) {
-                    validType = false;
-                }
-                if( files[0] && files[0].size > 10485760 ) {
-                    validSize = false;
+                if (filePattern.test(files[0].name) && files[0] && files[0].size < 10485760) {
+                    ngModel.$setValidity('checkfile', true);
+                } else {
+                    ngModel.$setValidity('checkfile', false);
+                    return undefined;
                 }
 
-                ngModel.$setValidity('valFileTypes', validType);
-                ngModel.$setValidity('valFileSize', validSize);
             }
         }
     };

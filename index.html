@@ -198,9 +198,8 @@
                         <!-- FILE -->
                         <div class="col-xs-4 file-control form-control-wrap">
                             <label for="exampleInputFile">Upload</label>
-                            <input type="file" name="file" id="exampleInputFile" ng-model="file" valid-file>
-                            <span ng-show="requestTicket.file.$error.valFileTypes" class="text-danger">Invalid file type.</span>
-                            <span ng-show="requestTicket.file.$error.valFileSize" class="text-danger">Invalid file size.</span>
+                            <input type="file" name="file" id="exampleInputFile" ng-model="file" checkfile>
+                            <span ng-show="requestTicket.file.$error.checkfile" class="text-danger">Your file to big or have wrong size.</span>
                             <p class="help-block">Attache your screenshot or document. We support this file types: jpg, png, doc, pdf. Max file size 10mb.</p>
                         </div>
 
