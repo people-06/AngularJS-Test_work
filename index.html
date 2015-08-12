@@ -134,28 +134,28 @@
                 <h1>Open the Question</h1>
                 <h4>Make World better!</h4>
             </header>
-            <form class="request-form" action="" name="requestTicket"  ng-controller="validateCtrl" novalidate>
+            <form class="request-form"  role="form" name="requestTicket" ng-controller="sendFormCtrl" novalidate ng-submit="processForm()">
                 <div class="modal-body">
                     <p class="help-block pull-right"><small>Be sure, your surname, email and phone number is confidential information and will not be shown at the site</small></p>
                     <div class="form-group row">
 
                         <!-- NAME -->
                         <div class="col-xs-4 form-control-wrap">
-                            <input type="text" class="form-control" placeholder="First Name*" name="name" ng-model="name" ng-pattern="namePattern" required>
-                                <span ng-show="requestTicket.name.$dirty && requestTicket.name.$invalid && !requestTicket.name.$error.required" class="text-danger">Invalid.</span>
+                            <input type="text" class="form-control" placeholder="First Name*" name="name" ng-model="name" checkname required>
+                                <span ng-show="requestTicket.name.$error.checkname" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.name.$dirty && requestTicket.name.$error.required" class="text-danger">First Name is required.</span>
                         </div>
 
                         <!-- SURNAME -->
                         <div class="col-xs-4 form-control-wrap">
-                            <input type="text" class="form-control" placeholder="Surname*" name="surname" ng-model="surname" ng-pattern="namePattern" required>
-                                <span ng-show="requestTicket.surname.$dirty && requestTicket.surname.$invalid && !requestTicket.surname.$error.required" class="text-danger">Invalid.</span>
+                            <input type="text" class="form-control" placeholder="Surname*" name="surname" ng-model="surname" checkName required>
+                                <span ng-show="requestTicket.surname.$error.checkName" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.surname.$dirty && requestTicket.surname.$error.required" class="text-danger">Surname is required.</span>
                         </div>
 
                         <!-- EMAIL -->
                         <div class="col-xs-4 form-control-wrap">
-                            <input type="text" class="form-control" placeholder="Email*" name="email" ng-model="email" ng-pattern="emailPattern" required>
+                            <input type="text" class="form-control" placeholder="Email*" name="email" ng-model="email" checkemail required>
                                 <span ng-show="requestTicket.email.$dirty && requestTicket.email.$invalid && !requestTicket.email.$error.required" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.email.$dirty && requestTicket.email.$error.required" class="text-danger">Email is required.</span>
                         </div>
@@ -164,7 +164,7 @@
 
                         <!-- PHONE -->
                         <div class="col-xs-4 form-control-wrap">
-                            <input type="text" class="form-control" placeholder="Your phone number*" name="phone" ng-model="phone" ng-pattern="phonePattern" required>
+                            <input type="text" class="form-control" placeholder="Your phone number*" name="phone" ng-model="phone" checkphone required>
                                 <span ng-show="requestTicket.phone.$dirty && requestTicket.phone.$invalid && !requestTicket.phone.$error.required" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.phone.$dirty && requestTicket.phone.$error.required" class="text-danger">Phone number is required.</span>
                         </div>

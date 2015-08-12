@@ -116,15 +116,78 @@ CommissionApp.controller('CloseTicketViewCtrl', function ($scope, $modalInstance
     };
 });
 
-// Form validation
 
-CommissionApp.controller('validateCtrl', function($scope) {
-    $scope.namePattern = /([А-яЁё])+/;
-    $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
-    $scope.phonePattern = /^[+\(\)0-9-\s]{5,18}$/;
+// Save form to the data
+
+CommissionApp.controller('sendFormCtrl', ['$scope', function($scope){
+    var formData = {};
+
+    $scope.processForm = function() {
+        formData = {
+            "firstName": $scope.name,
+            "lastName": $scope.surname,
+            "phone": $scope.phone,
+            "address": $scope.address,
+            "title":  $scope.title,
+            "description":  $scope.description
+        };
+        console.log(formData);
+    };
+}]);
+
+// FORM VALIDATION
+
+// Name and Surname validation
+CommissionApp.directive('checkname', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            ctrl.$parsers.unshift(function(checkname) {
+                if (/([a-zA-zА-яЁё])+/.test(checkname)) {
+                    ctrl.$setValidity('checkname', true);
+                    return checkname;
+                } else {
+                    ctrl.$setValidity('checkname', false);
+                    return undefined;
+                }
+            });
+        }
+    };
 });
-
-
+// Email validation
+CommissionApp.directive('checkemail', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            ctrl.$parsers.unshift(function(checkemail) {
+                if (/^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/.test(checkemail)) {
+                    ctrl.$setValidity('checkemail', true);
+                    return checkemail;
+                } else {
+                    ctrl.$setValidity('checkemail', false);
+                    return undefined;
+                }
+            });
+        }
+    };
+});
+// Phone validation
+CommissionApp.directive('checkphone', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            ctrl.$parsers.unshift(function(checkphone) {
+                if (/^[+\(\)0-9-\s]{5,18}$/.test(checkphone)) {
+                    ctrl.$setValidity('checkphone', true);
+                    return checkphone;
+                } else {
+                    ctrl.$setValidity('checkphone', false);
+                    return undefined;
+                }
+            });
+        }
+    };
+});
 // File validation
 CommissionApp.directive('validFile', function () {
 
@@ -148,11 +211,9 @@ CommissionApp.directive('validFile', function () {
                 // Check file type and size of each file
                 if (!filePattern.test(files[0].name)) {
                     validType = false;
-                    //clearFileInput(elem[0]);
                 }
                 if( files[0] && files[0].size > 10485760 ) {
                     validSize = false;
-                    //clearFileInput(elem[0]);
                 }
 
                 ngModel.$setValidity('valFileTypes', validType);
