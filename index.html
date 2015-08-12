@@ -134,26 +134,49 @@
                 <h1>Open the Question</h1>
                 <h4>Make World better!</h4>
             </header>
-            <form class="request-form" action="" name="requestTicket">
+            <form class="request-form" action="" name="requestTicket"  ng-controller="validateCtrl" novalidate>
                 <div class="modal-body">
-                    <p class="help-block pull-right"><small>Be sure, your family name, email and phone number is confidential information and will not be shown at the site</small></p>
+                    <p class="help-block pull-right"><small>Be sure, your surname, email and phone number is confidential information and will not be shown at the site</small></p>
                     <div class="form-group row">
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" placeholder="Your full name">
+
+                        <!-- NAME -->
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" placeholder="First Name" name="name" ng-model="name" ng-pattern="namePattern" required>
+                                <span ng-show="requestTicket.name.$dirty && requestTicket.name.$invalid && !requestTicket.name.$error.required" class="text-danger">Invalid.</span>
+                                <span ng-show="requestTicket.name.$dirty && requestTicket.name.$error.required" class="text-danger">First Name is required.</span>
                         </div>
-                        <div class="col-xs-6">
-                            <input type="text" class="form-control" placeholder="Email">
+
+                        <!-- SURNAME -->
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" placeholder="Surname" name="surname" ng-model="surname" ng-pattern="namePattern" required>
+                                <span ng-show="requestTicket.surname.$dirty && requestTicket.surname.$invalid && !requestTicket.surname.$error.required" class="text-danger">Invalid.</span>
+                                <span ng-show="requestTicket.surname.$dirty && requestTicket.surname.$error.required" class="text-danger">Surname is required.</span>
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" placeholder="Email" name="email" ng-model="email" ng-pattern="emailPattern" required>
+                                <span ng-show="requestTicket.email.$dirty && requestTicket.email.$invalid && !requestTicket.email.$error.required" class="text-danger">Invalid.</span>
+                                <span ng-show="requestTicket.email.$dirty && requestTicket.email.$error.required" class="text-danger">Email is required.</span>
                         </div>
                     </div>
                     <div class="form-group row">
+
+                        <!-- PHONE -->
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" placeholder="Your mobile">
+                            <input type="text" class="form-control" placeholder="Your phone number" name="phone" ng-model="phone" ng-pattern="phonePattern" required>
+                                <span ng-show="requestTicket.phone.$dirty && requestTicket.phone.$invalid && !requestTicket.phone.$error.required" class="text-danger">Invalid.</span>
+                                <span ng-show="requestTicket.phone.$dirty && requestTicket.phone.$error.required" class="text-danger">Phone number is required.</span>
                         </div>
+
+                        <!-- ADDRESS -->
                         <div class="col-xs-8">
                             <input type="text" class="form-control" placeholder="Address, where happen a problem">
                         </div>
                     </div>
                     <div class="form-group row">
+
+                        <!-- PROBLEM -->
                         <div class="col-xs-4">
                             <select class="form-control">
                                 <option value="" selected="selected" disabled>Please specify a problem</option>
@@ -162,29 +185,45 @@
                                 <option value="368">I'm drunk</option>
                             </select>
                         </div>
+
+                        <!-- TITLE -->
                         <div class="col-xs-8">
-                            <input type="text" class="form-control" placeholder="Title">
+                            <input type="text" class="form-control" placeholder="Title" name="title" ng-model="title" required>
+                            <span ng-show="requestTicket.title.$dirty && requestTicket.title.$invalid && !requestTicket.title.$error.required" class="text-danger">Invalid.</span>
+                            <span ng-show="requestTicket.title.$dirty && requestTicket.title.$error.required" class="text-danger">Title is required.</span>
                         </div>
                     </div>
                     <div class="form-group row">
+
+                        <!-- FILE -->
                         <div class="col-xs-4">
                             <label for="exampleInputFile">Upload</label>
-                            <input type="file" id="exampleInputFile">
-                            <p class="help-block">Attache your screenshot.</p>
+                            <input type="file" name="file" id="exampleInputFile" ng-model="file" valid-file>
+                            <span ng-show="requestTicket.file.$error.valFileTypes" class="text-danger">Invalid file type.</span>
+                            <span ng-show="requestTicket.file.$error.valFileSize" class="text-danger">Invalid file size.</span>
+                            <p class="help-block">Attache your screenshot or document. We support this file types: jpg, png, doc, pdf. Max file size 10mb.</p>
                         </div>
-                        <div class="col-xs-8"><textarea class="form-control" rows="5" placeholder="Details"></textarea></div>
+
+                        <!-- DESCRIPTION -->
+                        <div class="col-xs-8">
+                            <textarea class="form-control" rows="5" placeholder="Description" placeholder="" name="description" ng-model="description" required></textarea>
+                            <span ng-show="requestTicket.description.$dirty && requestTicket.description.$invalid && !requestTicket.description.$error.required" class="text-danger">Invalid.</span>
+                            <span ng-show="requestTicket.description.$dirty && requestTicket.description.$error.required" class="text-danger">Description is required.</span>
+                        </div>
                     </div>
 
                 </div>
                 <footer class="modal-footer">
+                    <!-- AGREEMENT -->
                     <div class="agreement pull-left">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" ng-model="checked"> <small>Agree with site rules</small>
+                                <input type="checkbox" name="agreement" ng-model="agreement" required> <small>Agree with site rules</small>
                             </label>
                         </div>
                     </div>
-                    <button type="submit" ng-click="ok()" ng-disabled="!checked" class="btn btn-primary btn-lg">Send your request</button>
+                    <!-- BUTTONS -->
+                    <button type="submit" ng-click="ok()" ng-disabled="requestTicket.$invalid" class="btn btn-primary btn-lg">Send your request</button>
                     <button type="cancel" ng-click="cancel()" class="btn btn-warning btn-lg">Cancel</button>
                 </footer>
             </form>
