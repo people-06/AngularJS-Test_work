@@ -122,7 +122,6 @@ CommissionApp.controller('validateCtrl', function($scope) {
     $scope.namePattern = /([А-яЁё])+/;
     $scope.emailPattern = /^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/;
     $scope.phonePattern = /^[+\(\)0-9-\s]{5,18}$/;
-    $scope.filePattern = /^([a-zA-Z0-9А-яЁё\s_\\.\-:])+\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|doc|DOC|pdf|PDF)$/;
 });
 
 

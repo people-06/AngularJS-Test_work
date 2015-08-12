@@ -140,22 +140,22 @@
                     <div class="form-group row">
 
                         <!-- NAME -->
-                        <div class="col-xs-4">
-                            <input type="text" class="form-control" placeholder="First Name" name="name" ng-model="name" ng-pattern="namePattern" required>
+                        <div class="col-xs-4 form-control-wrap">
+                            <input type="text" class="form-control" placeholder="First Name*" name="name" ng-model="name" ng-pattern="namePattern" required>
                                 <span ng-show="requestTicket.name.$dirty && requestTicket.name.$invalid && !requestTicket.name.$error.required" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.name.$dirty && requestTicket.name.$error.required" class="text-danger">First Name is required.</span>
                         </div>
 
                         <!-- SURNAME -->
-                        <div class="col-xs-4">
-                            <input type="text" class="form-control" placeholder="Surname" name="surname" ng-model="surname" ng-pattern="namePattern" required>
+                        <div class="col-xs-4 form-control-wrap">
+                            <input type="text" class="form-control" placeholder="Surname*" name="surname" ng-model="surname" ng-pattern="namePattern" required>
                                 <span ng-show="requestTicket.surname.$dirty && requestTicket.surname.$invalid && !requestTicket.surname.$error.required" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.surname.$dirty && requestTicket.surname.$error.required" class="text-danger">Surname is required.</span>
                         </div>
 
                         <!-- EMAIL -->
-                        <div class="col-xs-4">
-                            <input type="text" class="form-control" placeholder="Email" name="email" ng-model="email" ng-pattern="emailPattern" required>
+                        <div class="col-xs-4 form-control-wrap">
+                            <input type="text" class="form-control" placeholder="Email*" name="email" ng-model="email" ng-pattern="emailPattern" required>
                                 <span ng-show="requestTicket.email.$dirty && requestTicket.email.$invalid && !requestTicket.email.$error.required" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.email.$dirty && requestTicket.email.$error.required" class="text-danger">Email is required.</span>
                         </div>
@@ -163,21 +163,21 @@
                     <div class="form-group row">
 
                         <!-- PHONE -->
-                        <div class="col-xs-4">
-                            <input type="text" class="form-control" placeholder="Your phone number" name="phone" ng-model="phone" ng-pattern="phonePattern" required>
+                        <div class="col-xs-4 form-control-wrap">
+                            <input type="text" class="form-control" placeholder="Your phone number*" name="phone" ng-model="phone" ng-pattern="phonePattern" required>
                                 <span ng-show="requestTicket.phone.$dirty && requestTicket.phone.$invalid && !requestTicket.phone.$error.required" class="text-danger">Invalid.</span>
                                 <span ng-show="requestTicket.phone.$dirty && requestTicket.phone.$error.required" class="text-danger">Phone number is required.</span>
                         </div>
 
                         <!-- ADDRESS -->
-                        <div class="col-xs-8">
+                        <div class="col-xs-8 form-control-wrap">
                             <input type="text" class="form-control" placeholder="Address, where happen a problem">
                         </div>
                     </div>
                     <div class="form-group row">
 
                         <!-- PROBLEM -->
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 form-control-wrap">
                             <select class="form-control">
                                 <option value="" selected="selected" disabled>Please specify a problem</option>
                                 <option value="366">I want sleep</option>
@@ -187,8 +187,8 @@
                         </div>
 
                         <!-- TITLE -->
-                        <div class="col-xs-8">
-                            <input type="text" class="form-control" placeholder="Title" name="title" ng-model="title" required>
+                        <div class="col-xs-8 form-control-wrap">
+                            <input type="text" class="form-control" placeholder="Title*" name="title" ng-model="title" required>
                             <span ng-show="requestTicket.title.$dirty && requestTicket.title.$invalid && !requestTicket.title.$error.required" class="text-danger">Invalid.</span>
                             <span ng-show="requestTicket.title.$dirty && requestTicket.title.$error.required" class="text-danger">Title is required.</span>
                         </div>
@@ -196,7 +196,7 @@
                     <div class="form-group row">
 
                         <!-- FILE -->
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 file-control form-control-wrap">
                             <label for="exampleInputFile">Upload</label>
                             <input type="file" name="file" id="exampleInputFile" ng-model="file" valid-file>
                             <span ng-show="requestTicket.file.$error.valFileTypes" class="text-danger">Invalid file type.</span>
@@ -205,8 +205,8 @@
                         </div>
 
                         <!-- DESCRIPTION -->
-                        <div class="col-xs-8">
-                            <textarea class="form-control" rows="5" placeholder="Description" placeholder="" name="description" ng-model="description" required></textarea>
+                        <div class="col-xs-8 form-control-wrap">
+                            <textarea class="form-control" rows="5" placeholder="Description*" placeholder="" name="description" ng-model="description" required></textarea>
                             <span ng-show="requestTicket.description.$dirty && requestTicket.description.$invalid && !requestTicket.description.$error.required" class="text-danger">Invalid.</span>
                             <span ng-show="requestTicket.description.$dirty && requestTicket.description.$error.required" class="text-danger">Description is required.</span>
                         </div>
